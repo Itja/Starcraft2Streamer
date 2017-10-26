@@ -37,10 +37,10 @@ void Streamer::run(int argc, char **argv)
 	log_info("coordinator->LoadSettings() successful, loading replay(s) from " << replay_path);
 
 	//TODO: coordinator->SetRealtime(true); //does not work because of https://github.com/Blizzard/s2client-api/blob/master/src/sc2api/sc2_coordinator.cc#L690 ?
-	//todo: coordinator->SetDataVersion(...) //saves SECONDS on startup of a replay
+	//coordinator->SetDataVersion(...) //saves SECONDS on startup of a replay
 	//todo: coordinator->SetRender(...)
-	//todo: coordinator->SetWindowSize(...)
-	//todo: coordinator->SetWindowLocation(...)
+	coordinator->SetWindowSize(1920, 1080);
+	coordinator->SetWindowLocation(0, 0);
 	
 	if (!coordinator->SetReplayPath(replay_path)) {
 		log_error("Couldn't find replays in " << replay_path)

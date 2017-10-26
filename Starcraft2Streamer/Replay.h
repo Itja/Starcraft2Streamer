@@ -18,4 +18,10 @@ public:
 	void OnStep() final;
 
 	void OnGameEnd() final;
+
+private:
+	//On "faster" the game runs at 22.4 gameloops per second
+	//for each step, ~44.6429ms are optimal for normal observation or even less for "boring" phases
+	static const double optimal_elapsed_ms;
+	std::chrono::time_point<std::chrono::steady_clock> start_time, last_step_time;
 };
