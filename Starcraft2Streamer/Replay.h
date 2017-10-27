@@ -19,9 +19,12 @@ public:
 
 	void OnGameEnd() final;
 
+	virtual bool IgnoreReplay(const sc2::ReplayInfo& replay_info, uint32_t& player_id);
+
 private:
 	//On "faster" the game runs at 22.4 gameloops per second
-	//for each step, ~44.6429ms are optimal for normal observation or even less for "boring" phases
-	static const double optimal_elapsed_ms;
+	//for each step, ~44642.8571us are optimal for normal observation or even less for "boring" phases
+	static const double optimal_elapsed_us;
+	static const double offset_us;
 	std::chrono::time_point<std::chrono::steady_clock> start_time, last_step_time;
 };
